@@ -35,8 +35,8 @@ def lazy_matrix_mul(m_a, m_b):
         raise ValueError("m_b can't be empty")
 
     try:
-        a = np.array(m_a, dtype=float)
-        b = np.array(m_b, dtype=float)
+        a = np.array(m_a)
+        b = np.array(m_b)
         return np.matmul(a, b).astype(int)
     except TypeError as e:
         if "setting an array element with a sequence" in str(e):
