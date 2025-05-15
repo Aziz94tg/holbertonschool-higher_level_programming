@@ -1,19 +1,22 @@
 >>> __import__('5-text_indentation').text_indentation("Hello. My name is GPT? Cool:Yes.")
 Hello.
-
- My name is GPT?
-
- Cool:
+<BLANKLINE>
+My name is GPT?
+<BLANKLINE>
+Cool:
+<BLANKLINE>
 Yes.
+<BLANKLINE>
 
 >>> __import__('5-text_indentation').text_indentation("One: Two. Three? Done.")
 One:
-
- Two.
-
- Three?
-
- Done.
+<BLANKLINE>
+Two.
+<BLANKLINE>
+Three?
+<BLANKLINE>
+Done.
+<BLANKLINE>
 
 >>> __import__('5-text_indentation').text_indentation(42)
 Traceback (most recent call last):
