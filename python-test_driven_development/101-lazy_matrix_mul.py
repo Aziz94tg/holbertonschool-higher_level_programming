@@ -33,7 +33,6 @@ def lazy_matrix_mul(m_a, m_b):
         raise ValueError("m_a can't be empty")
     if m_b == []:
         raise ValueError("m_b can't be empty")
-
     try:
         a = np.array(m_a)
         b = np.array(m_b)
@@ -41,13 +40,7 @@ def lazy_matrix_mul(m_a, m_b):
     except ValueError as e:
         if "setting an array element with a sequence" in str(e):
             raise TypeError("setting an array element with a sequence.")
-    else:
-        shape_a = np.shape(m_a)
-        shape_b = np.shape(m_b)
-        shape_a_str = f"({shape_a[0]},{shape_a[1]})"
-        shape_b_str = f"({shape_b[0]},{shape_b[1]})"
-        raise ValueError(
-            f"shapes {shape_a_str} and {shape_b_str} not aligned: "
-            f"{shape_a[1]} (dim 1) != {shape_b[0]} (dim 0)"
-        )
+        if "shapes" in str(e) and "not aligned" in str(e):
+            raise ValueError(str(e))  # Let NumPy's exact message through
+    raise
 
