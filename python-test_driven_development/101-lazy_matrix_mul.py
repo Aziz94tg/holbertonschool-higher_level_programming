@@ -16,7 +16,7 @@ def lazy_matrix_mul(m_a, m_b):
 
     Raises:
         TypeError, ValueError: with exact messages expected by the checker"""
-    if isinstance(m_a, str) or isinstance(m_b, str):
+        if isinstance(m_a, str) or isinstance(m_b, str):
         raise TypeError("Scalar operands are not allowed, use '*' instead")
 
     if not isinstance(m_a, list):
@@ -35,7 +35,11 @@ def lazy_matrix_mul(m_a, m_b):
         raise ValueError("m_b can't be empty")
 
     try:
-        return np.matmul(m_a, m_b)
+        # Trigger potential row-size or element-type errors here
+        a = np.array(m_a, dtype=float)
+        b = np.array(m_b, dtype=float)
+
+        return np.matmul(a, b)
     except TypeError as e:
         if "setting an array element with a sequence" in str(e):
             raise TypeError("setting an array element with a sequence.")
