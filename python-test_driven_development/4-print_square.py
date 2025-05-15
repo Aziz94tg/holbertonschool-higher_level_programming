@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines a function that 
+This module defines a function that
 prints a square with the character #.
 """
 
