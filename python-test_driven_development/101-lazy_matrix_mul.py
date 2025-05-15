@@ -16,7 +16,7 @@ def lazy_matrix_mul(m_a, m_b):
 
     Raises:
         TypeError, ValueError: with exact messages expected by the checker"""
-        if isinstance(m_a, str) or isinstance(m_b, str):
+    if isinstance(m_a, str) or isinstance(m_b, str):
         raise TypeError("Scalar operands are not allowed, use '*' instead")
 
     if not isinstance(m_a, list):
