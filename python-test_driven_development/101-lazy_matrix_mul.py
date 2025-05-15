@@ -38,11 +38,10 @@ def lazy_matrix_mul(m_a, m_b):
         a = np.array(m_a)
         b = np.array(m_b)
         return np.matmul(a, b).astype(int)
-    except TypeError as e:
+    except ValueError as e:
         if "setting an array element with a sequence" in str(e):
             raise TypeError("setting an array element with a sequence.")
-        raise TypeError("invalid data type for einsum")
-    except ValueError:
+    else:
         shape_a = np.shape(m_a)
         shape_b = np.shape(m_b)
         shape_a_str = f"({shape_a[0]},{shape_a[1]})"
@@ -51,3 +50,4 @@ def lazy_matrix_mul(m_a, m_b):
             f"shapes {shape_a_str} and {shape_b_str} not aligned: "
             f"{shape_a[1]} (dim 1) != {shape_b[0]} (dim 0)"
         )
+
