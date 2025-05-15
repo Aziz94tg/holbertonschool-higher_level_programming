@@ -39,10 +39,6 @@ def lazy_matrix_mul(m_a, m_b):
     if not all(row for row in m_b):
         pass
 
-    if any(len(row) != len(m_a[0]) for row in m_a):
-        raise TypeError("each row of m_a must be of the same size")
-    if any(len(row) != len(m_b[0]) for row in m_b):
-        raise TypeError("each row of m_b must be of the same size")
     try:
         return np.matmul(m_a, m_b)
     except TypeError as e:
@@ -55,6 +51,6 @@ def lazy_matrix_mul(m_a, m_b):
         shape_a_str = f"({shape_a[0]},{shape_a[1]})"
         shape_b_str = f"({shape_b[0]},{shape_b[1]})"
         raise ValueError(
-                f"shapes {shape_a_str} and {shape_b_str} not aligned: "
-                f"{shape_a[1]} (dim 1) != {shape_b[0]} (dim 0)"
-    )
+            f"shapes {shape_a_str} and {shape_b_str} not aligned: "
+            f"{shape_a[1]} (dim 1) != {shape_b[0]} (dim 0)"
+        )
