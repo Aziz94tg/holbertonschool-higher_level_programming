@@ -1,21 +1,19 @@
->>> import 0-add_integer
->>> 0-add_integer.add_integer(1, 2)
+>>> __import__('0-add_integer').add_integer(1, 2)
 3
->>> 0-add_integer.add_integer(100, -2)
+>>> __import__('0-add_integer').add_integer(100, -2)
 98
->>> 0-add_integer.add_integer(2)
+>>> __import__('0-add_integer').add_integer(2)
 100
->>> 0-add_integer.add_integer(100.3, -2)
+>>> __import__('0-add_integer').add_integer(100.3, -2)
 98
->>> 0-add_integer.add_integer(1.5, 2.7)
+>>> __import__('0-add_integer').add_integer(1.5, 2.7)
 3
->>> 0-add_integer.add_integer("Hello", 2)
+>>> __import__('0-add_integer').add_integer("Hello", 2)
 Traceback (most recent call last):
 TypeError: a must be an integer
->>> 0-add_integer.add_integer(2, "World")
+>>> __import__('0-add_integer').add_integer(2, "World")
 Traceback (most recent call last):
 TypeError: b must be an integer
->>> 0-add_integer.add_integer(None)
+>>> __import__('0-add_integer').add_integer(None)
 Traceback (most recent call last):
 TypeError: a must be an integer
-
