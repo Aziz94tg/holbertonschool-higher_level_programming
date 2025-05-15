@@ -45,7 +45,9 @@ def lazy_matrix_mul(m_a, m_b):
         raise TypeError("each row of m_b must be of the same size")
     try:
         return np.matmul(m_a, m_b)
-    except TypeError:
+    except TypeError as e:
+        if "setting an array element with a sequence" in str(e):
+            raise TypeError("setting an array element with a sequence.")
         raise TypeError("invalid data type for einsum")
     except ValueError:
         shape_a = np.shape(m_a)
@@ -53,7 +55,6 @@ def lazy_matrix_mul(m_a, m_b):
         shape_a_str = f"({shape_a[0]},{shape_a[1]})"
         shape_b_str = f"({shape_b[0]},{shape_b[1]})"
         raise ValueError(
-            f"shapes {shape_a_str} and {shape_b_str} not aligned: "
-            f"{shape_a[1]} (dim 1) != {shape_b[0]} (dim 0)"
+                f"shapes {shape_a_str} and {shape_b_str} not aligned: "
+                f"{shape_a[1]} (dim 1) != {shape_b[0]} (dim 0)"
     )
-
