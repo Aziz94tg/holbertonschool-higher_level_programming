@@ -20,4 +20,7 @@ TypeError: a must be an integer
 >>> __import__('0-add_integer').add_integer(1e400, 1)
 Traceback (most recent call last):
 OverflowError: cannot convert float infinity to integer
+>>> __import__('0-add_integer').add_integer(float('nan'), 1)
+Traceback (most recent call last):
+OverflowError: cannot convert float NaN to integer
 
