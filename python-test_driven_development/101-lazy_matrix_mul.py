@@ -21,5 +21,5 @@ def lazy_matrix_mul(m_a, m_b):
         TypeError: If m_a or m_b is not a valid list of lists of numbers.
         ValueError: If the matrices can't be multiplied.
     """
-    try:
+
         return np.matmul(m_a, m_b)
