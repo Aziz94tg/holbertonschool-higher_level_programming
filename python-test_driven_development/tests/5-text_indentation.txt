@@ -1,0 +1,21 @@
+>>> __import__('5-text_indentation').text_indentation("Hello. My name is GPT? Cool:Yes.")
+Hello.
+
+ My name is GPT?
+
+ Cool:
+Yes.
+
+>>> __import__('5-text_indentation').text_indentation("One: Two. Three? Done.")
+One:
+
+ Two.
+
+ Three?
+
+ Done.
+
+>>> __import__('5-text_indentation').text_indentation(42)
+Traceback (most recent call last):
+TypeError: text must be a string
+
