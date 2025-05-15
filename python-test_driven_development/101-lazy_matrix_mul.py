@@ -34,11 +34,6 @@ def lazy_matrix_mul(m_a, m_b):
     if m_b == []:
         raise ValueError("m_b can't be empty")
 
-    if not all(row for row in m_a):
-        pass
-    if not all(row for row in m_b):
-        pass
-
     try:
         return np.matmul(m_a, m_b)
     except TypeError as e:
