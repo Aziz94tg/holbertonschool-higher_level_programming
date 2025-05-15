@@ -35,14 +35,9 @@ def lazy_matrix_mul(m_a, m_b):
         raise ValueError("m_b can't be empty")
 
     if not all(row for row in m_a):
-        pass  # Let NumPy handle shape mismatch for [[]]
+        pass
     if not all(row for row in m_b):
-        pass  # Same here
-
-    if not all(isinstance(el, (int, float)) for row in m_a for el in row):
-        raise TypeError("m_a should contain only integers or floats")
-    if not all(isinstance(el, (int, float)) for row in m_b for el in row):
-        raise TypeError("m_b should contain only integers or floats")
+        pass
 
     if any(len(row) != len(m_a[0]) for row in m_a):
         raise TypeError("each row of m_a must be of the same size")
