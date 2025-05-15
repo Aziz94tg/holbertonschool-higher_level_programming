@@ -22,4 +22,4 @@ def lazy_matrix_mul(m_a, m_b):
         ValueError: If the matrices can't be multiplied.
     """
 
-        return np.matmul(m_a, m_b)
+    return np.matmul(m_a, m_b)
