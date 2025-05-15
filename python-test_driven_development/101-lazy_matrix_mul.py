@@ -23,17 +23,17 @@ def lazy_matrix_mul(m_a, m_b):
     """
     if isinstance(m_a, str) or isinstance(m_b, str):
         raise TypeError("Scalar operands are not allowed, use '*' instead")
+
     
     try:
         return np.matmul(m_a, m_b)
     except ValueError as ve:
-        msg = str(ve)
-
-
-        if "core dimension" in msg:
-            if "(1,0)" in msg:
-                raise ValueError("shapes (1,0) and (2,2) not aligned: 0 (dim 1) != 2 (dim 0)")
-            elif "(2,2)" in msg and "(1,0)" in str(np.shape(m_b)):
-                raise ValueError("shapes (2,2) and (1,0) not aligned: 2 (dim 1) != 1 (dim 0)")
-
-        raise  
+        try:
+            shape_a = np.shape(m_a)
+            shape_b = np.shape(m_b)
+            raise ValueError(
+                f"shapes {shape_a} and {shape_b} not aligned: "
+                f"{shape_a[1]} (dim 1) != {shape_b[0]} (dim 0)"
+            )
+        except Exception:
+            raise ve
