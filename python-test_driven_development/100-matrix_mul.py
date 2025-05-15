@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-This module provides a function to multiply two matrices.
-
+This module provides a function to multiply two matrices
 """
 
 
@@ -62,4 +61,3 @@ def matrix_mul(m_a, m_b):
         result.append(new_row)
 
     return result
-
