@@ -9,7 +9,7 @@ It that both arguments are integers or floats, cast floats to integer.
 
 def add_integer(a, b=98):
 
-    """    
+    ""' 
     Add two integer.
 
     Args:
