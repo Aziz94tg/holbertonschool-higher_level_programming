@@ -30,10 +30,14 @@ def lazy_matrix_mul(m_a, m_b):
     if not all(isinstance(row, list) for row in m_b):
         raise TypeError("m_b must be a list of lists")
 
-    if not m_a or not all(isinstance(row, list) and row for row in m_a):
+    if not m_a:
         raise ValueError("m_a can't be empty")
+    if not m_b:
+        raise ValueError("m_b can't be empty")
 
-    if not m_b or not all(isinstance(row, list) and row for row in m_b):
+    if not all(row for row in m_a if isinstance(row, list)):
+        raise ValueError("m_a can't be empty")
+    if not all(row for row in m_b if isinstance(row, list)):
         raise ValueError("m_b can't be empty")
 
     if not all(isinstance(el, (int, float)) for row in m_a for el in row):
@@ -50,4 +54,3 @@ def lazy_matrix_mul(m_a, m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
     return np.matmul(m_a, m_b)
-
