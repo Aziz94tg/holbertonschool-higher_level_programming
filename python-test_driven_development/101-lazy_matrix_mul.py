@@ -37,7 +37,7 @@ def lazy_matrix_mul(m_a, m_b):
     try:
         a = np.array(m_a, dtype=float)
         b = np.array(m_b, dtype=float)
-        return np.matmul(a, b).astype(int).tolist()
+        return np.matmul(a, b).astype(int)
     except TypeError as e:
         if "setting an array element with a sequence" in str(e):
             raise TypeError("setting an array element with a sequence.")
