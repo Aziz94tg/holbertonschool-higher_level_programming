@@ -18,9 +18,8 @@ def lazy_matrix_mul(m_a, m_b):
         TypeError, ValueError: with exact messages expected by the checker"""
     try:
         return np.matmul(np.array(m_a), np.array(m_b))
-    except ValueError as e:
-        err = str(e)
-        # Rewrite NumPy's newer error to the old expected message
-        if "did not contain a loop with signature matching" in err:
+    except (ValueError, TypeError) as e:
+        msg = str(e)
+        if "did not contain a loop with signature matching" in msg:
             raise ValueError("Scalar operands are not allowed, use '*' instead") from None
         raise
