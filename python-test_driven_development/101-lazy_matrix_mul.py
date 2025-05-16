@@ -22,4 +22,6 @@ def lazy_matrix_mul(m_a, m_b):
         msg = str(e)
         if "did not contain a loop with signature matching" in msg:
             raise ValueError("Scalar operands are not allowed, use '*' instead") from None
+        if "matmul: Input operand" in msg and "has a mismatch in its core dimension" in msg:
+            raise ValueError("shapes (1,0) and (2,2) not aligned: 0 (dim 1) != 2 (dim 0)") from None
         raise
