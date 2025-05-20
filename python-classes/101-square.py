@@ -49,16 +49,16 @@ class Square:
         print(self.__str__())
 
     def __str__(self):
-        """Returns the string representation of the square for printing."""
+        """Returns the string representation of the square."""
         if self.__size == 0:
             return ""
 
-        result = []
+        lines = []
 
-        result.append("\n" * self.__position[1])
+        for _ in range(self.__position[1]):
+            lines.append("")
 
         for _ in range(self.__size):
-            line = " " * self.__position[0] + "#" * self.__size
-            result.append(line)
+            lines.append(" " * self.__position[0] + "#" * self.__size)
 
-        return "\n".join(result).lstrip("\n")
+        return "\n".join(lines)
