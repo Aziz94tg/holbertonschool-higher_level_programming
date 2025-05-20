@@ -42,7 +42,7 @@ class Node:
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
 
-#!/usr/bin/python3
+
 """
 Defines a Node class and SinglyLinkedList class with sorted insertion.
 """
