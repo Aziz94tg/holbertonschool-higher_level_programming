@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines a Square class that supports size validation, 
+This module defines a Square class that supports size validation,
 area computation, and printing the square visually using '#'.
 """
 
