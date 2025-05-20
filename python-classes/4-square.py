@@ -6,7 +6,7 @@ It uses property decorators to control access to the private size attribute.
 
 
 class Square:
-    """Defines a square with private size attribute, with getter/setter and area method."""
+    """Defines a square with private size attribute."""
 
     def __init__(self, size=0):
         """
