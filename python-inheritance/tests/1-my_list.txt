@@ -8,7 +8,7 @@
 [-5, 0, 2, 3]
 >>> my_list
 [3, -5, 0, 2]
->>> empty_list.print_sorted()
+>>> my_list.print_sorted()
 []
->>> empty_list
+>>> my_list
 []
