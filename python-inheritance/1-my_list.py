@@ -7,7 +7,7 @@ This module defines a custom list class that inherits from the built-in list.
 
 class MyList(list):
     """
-    A subclass of list with an additional method to print the list in sorted order.
+    A subclass of list.
     """
 
     def print_sorted(self):
