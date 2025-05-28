@@ -38,4 +38,8 @@ ValueError: width must be greater than 0
 Traceback (most recent call last):
 ...
 TypeError: age must be an integer
+>>> bg.integer_validator("age")
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
 
