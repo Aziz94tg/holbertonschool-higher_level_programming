@@ -27,6 +27,8 @@ class Student:
         Returns:
             dict: Dictionary of selected or all attributes.
         """
-        if (type(attrs) == list and all(type(attr) == str for attr in attrs)):
-            return {key: self.__dict__[key] for key in attrs if key in self.__dict__}
+        if isinstance(attrs, list) and all(isinstance(attr, str) for attr in attrs):
+            return {
+                    key: self.__dict__[key] for key in attrs if key in self.__dict__
+                    }
         return self.__dict__
