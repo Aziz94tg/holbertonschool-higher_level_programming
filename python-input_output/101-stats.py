@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-"""Reads stdin line by line and computes metrics:
-- Total file size
-- Count of each status code
+"""Script that reads stdin line by line and computes metrics:
+- File size total
+- Count of HTTP status codes
+Printed every 10 lines and on KeyboardInterrupt (CTRL + C)
 """
 
 import sys
