@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-"""Script that reads stdin line by line and computes metrics:
-- File size total
-- Count of HTTP status codes
-Printed every 10 lines and on KeyboardInterrupt (CTRL + C)
+"""Reads stdin line by line and computes:
+- Total file size
+- Count of valid HTTP status codes
 """
 
 import sys
@@ -12,13 +11,14 @@ status_counts = {}
 total_size = 0
 line_count = 0
 
+
 def print_stats():
-    """Prints collected metrics"""
     print("File size: {}".format(total_size))
     for code in sorted(status_counts):
         print("{}: {}".format(code, status_counts[code]))
-if __name__ == "__main__":
 
+
+if __name__ == "__main__":
     try:
         for line in sys.stdin:
             parts = line.strip().split()
@@ -36,6 +36,11 @@ if __name__ == "__main__":
             except (ValueError, IndexError):
                 pass
 
-        line_count += 1
-        if line_count % 10 == 0:
-            print_stats()
+            line_count += 1
+            if line_count % 10 == 0:
+                print_stats()
+
+    except KeyboardInterrupt:
+        pass
+    finally:
+        print_stats()
