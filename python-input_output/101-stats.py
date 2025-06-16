@@ -18,25 +18,24 @@ def print_stats():
     for code in sorted(status_counts):
         print("{}: {}".format(code, status_counts[code]))
 if __name__ == "__main__":
+
     try:
-        for line in sys.stdin:
-            parts = line.strip().split()
-            if len(parts) >= 7:
-                try:
-                    status = int(parts[-2])
-                    size = int(parts[-1])
-                    total_size += size
+    for line in sys.stdin:
+        parts = line.strip().split()
 
-                    if status in status_codes:
-                        status_counts[status] = status_counts.get(status, 0) + 1
-                except (ValueError, IndexError):
-                    pass
+        try:
+            size = int(parts[-1])
+            total_size += size
+        except (ValueError, IndexError):
+            pass
 
-            line_count += 1
-            if line_count % 10 == 0:
-                print_stats()
+        try:
+            status = int(parts[-2])
+            if status in status_codes:
+                status_counts[status] = status_counts.get(status, 0) + 1
+        except (ValueError, IndexError):
+            pass
 
-    except KeyboardInterrupt:
-        pass
-    finally:
-        print_stats()
+        line_count += 1
+        if line_count % 10 == 0:
+            print_stats()
