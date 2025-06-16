@@ -20,21 +20,21 @@ def print_stats():
 if __name__ == "__main__":
 
     try:
-    for line in sys.stdin:
-        parts = line.strip().split()
+        for line in sys.stdin:
+            parts = line.strip().split()
 
-        try:
-            size = int(parts[-1])
-            total_size += size
-        except (ValueError, IndexError):
-            pass
+            try:
+                size = int(parts[-1])
+                total_size += size
+            except (ValueError, IndexError):
+                pass
 
-        try:
-            status = int(parts[-2])
-            if status in status_codes:
-                status_counts[status] = status_counts.get(status, 0) + 1
-        except (ValueError, IndexError):
-            pass
+            try:
+                status = int(parts[-2])
+                if status in status_codes:
+                    status_counts[status] = status_counts.get(status, 0) + 1
+            except (ValueError, IndexError):
+                pass
 
         line_count += 1
         if line_count % 10 == 0:
