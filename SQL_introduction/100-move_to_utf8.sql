@@ -1,13 +1,12 @@
--- Step 1: Change the database default charset and collation
-ALTER DATABASE hbtn_0c_0 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- Step 1: Convert the database
+ALTER DATABASE hbtn_0c_0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
+-- Step 2: Use the database
 USE hbtn_0c_0;
 
-DROP TABLE IF EXISTS first_table;
+-- Step 3: Convert the table
+ALTER TABLE first_table CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-CREATE TABLE first_table (
-  id INT DEFAULT NULL,
-  name VARCHAR(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  score INT DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Step 4: Modify the `name` column only to update its collation, not its charset explicitly
+ALTER TABLE first_table MODIFY name VARCHAR(256) COLLATE utf8mb4_unicode_ci;
 
