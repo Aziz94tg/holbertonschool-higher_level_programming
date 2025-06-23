@@ -20,8 +20,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            status = {"massage": "OK"}
-            self.wfile.write(json.dumps(status).encode("utf-8"))
+            self.wfile.write(b'{"message": "OK"}')  # << exact string expected
 
         elif self.path == "/info":
             self.send_response(200)
@@ -34,8 +33,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            error = {"massage": "Not Found"}
-            self.wfile.write(json.dumps(error).encode("utf-8"))
+            self.wfile.write(b'{"message": "Not Found"}')  # << exact string expected
 
 def run(server_class=HTTPServer, handler_class=SimpleAPIHandler):
     port = 8000
@@ -46,3 +44,4 @@ def run(server_class=HTTPServer, handler_class=SimpleAPIHandler):
 
 if __name__ == "__main__":
     run()
+
