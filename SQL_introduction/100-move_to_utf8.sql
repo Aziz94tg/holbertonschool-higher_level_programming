@@ -1,12 +1,12 @@
--- Step 1: Convert the database
-ALTER DATABASE hbtn_0c_0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+-- Convert the database to UTF8MB4
+ALTER DATABASE hbtn_0c_0 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- Step 2: Use the database
+-- Select the database
 USE hbtn_0c_0;
 
--- Step 3: Convert the table
+-- Convert the table to UTF8MB4
 ALTER TABLE first_table CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- Step 4: Modify the `name` column only to update its collation, not its charset explicitly
+-- Now update ONLY the collation of the `name` column, without defining character set
 ALTER TABLE first_table MODIFY name VARCHAR(256) COLLATE utf8mb4_unicode_ci;
 
