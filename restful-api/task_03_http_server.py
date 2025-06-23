@@ -18,13 +18,13 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write(b'{"message":"OK"}')
+            self.wfile.write(b'{"message": "OK"}')
 
         else:
             self.send_response(404)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write(b'{"message":"Not Found"}')
+            self.wfile.write(b'{"message": "Not Found"}')
 
 def run():
     server_address = ('', 8000)
