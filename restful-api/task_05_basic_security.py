@@ -52,3 +52,6 @@ def login():
     access_token = create_access_token(identity={"username": username, "role": user["role"]})
     return jsonify(access_token=access_token), 200
 
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=5000)
+
