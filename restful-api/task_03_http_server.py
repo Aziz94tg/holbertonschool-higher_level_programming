@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import json
 
 class SimpleAPIHandler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -12,19 +13,22 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write(b'{"name":"John","age":30,"city":"New York"}')
+            data = {"name": "John", "age": 30, "city": "New York"}
+            self.wfile.write(json.dumps(data, separators=(",", ": ")).encode())
 
         elif self.path == "/status":
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write(b'{"message": "OK"}')
+            data = {"message": "OK"}
+            self.wfile.write(json.dumps(data, separators=(",", ": ")).encode())
 
         else:
             self.send_response(404)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write(b'{"message": "Not Found"}')
+            data = {"message": "Not Found"}
+            self.wfile.write(json.dumps(data, separators=(",", ": ")).encode())
 
 def run():
     server_address = ('', 8000)
@@ -34,4 +38,3 @@ def run():
 
 if __name__ == "__main__":
     run()
-
