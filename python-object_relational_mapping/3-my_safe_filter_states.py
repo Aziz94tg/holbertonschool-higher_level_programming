@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """
-Safely filters states by name using parameterized query to avoid SQL injection.
+Safely filters states by name using parameterized query to prevent SQL injection.
 Usage: ./3-my_safe_filter_states.py <mysql_username> <mysql_password> <database_name> <state_name>
 """
 
 import MySQLdb
 import sys
+
 
 if __name__ == "__main__":
     username = sys.argv[1]
@@ -24,4 +25,3 @@ if __name__ == "__main__":
 
     cur.close()
     db.close()
-
