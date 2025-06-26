@@ -32,7 +32,7 @@ if __name__ == "__main__":
     results = cursor.fetchall()
 
     # Format output as comma-separated list
-    print(", ".join([city[0] for city in results]), end="")
+    print(", ".join([city[0] for city in results]))
 
     cursor.close()
     db.close()
