@@ -1,27 +1,43 @@
 #!/usr/bin/python3
 """
-Safely filters states by name using parameterized query to prevent SQL injection.
-Usage: ./3-my_safe_filter_states.py <mysql_username> <mysql_password> <database_name> <state_name>
+Lists all values in the states table of hbtn_0e_0_usa
+where name matches the argument, safe from SQL injection.
 """
 
 import MySQLdb
 import sys
 
 
-if __name__ == "__main__":
+def main():
+    """
+    Connects to the database and fetches states matching
+    the input name using parameterized queries.
+    """
     username = sys.argv[1]
     password = sys.argv[2]
-    dbname = sys.argv[3]
+    database = sys.argv[3]
     state_name = sys.argv[4]
 
-    db = MySQLdb.connect(host="localhost", port=3306,
-                         user=username, passwd=password, db=dbname)
-    cur = db.cursor()
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=username,
+        passwd=password,
+        db=database,
+        charset="utf8"
+    )
+    cursor = db.cursor()
 
-    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (state_name,))
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+    cursor.execute(query, (state_name,))
 
-    for row in cur.fetchall():
+    for row in cursor.fetchall():
         print(row)
 
-    cur.close()
+    cursor.close()
     db.close()
+
+
+if __name__ == "__main__":
+    main()
+
