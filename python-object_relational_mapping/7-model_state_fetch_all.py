@@ -2,7 +2,8 @@
 """
 Lists all State objects from the database hbtn_0e_6_usa.
 
-Usage: ./7-model_state_fetch_all.py <mysql_username> <mysql_password> <database_name>
+Usage: ./7-model_state_fetch_all.py
+<mysql_username> <mysql_password> <database_name>
 """
 
 from sys import argv
@@ -25,4 +26,3 @@ if __name__ == "__main__":
         print(f"{state.id}: {state.name}")
 
     session.close()
-
