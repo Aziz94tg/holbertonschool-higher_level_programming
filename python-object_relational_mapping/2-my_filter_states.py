@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """
-Lists all values in the states table of hbtn_0e_0_usa
-where name matches the argument.
-Usage: ./2-my_filter_states.py <mysql_username> <mysql_password> <database_name> <state_name>
+Lists all values in the states table where name matches the argument.
 """
 
 import MySQLdb
@@ -18,7 +16,9 @@ if __name__ == "__main__":
                          user=username, passwd=password, db=database)
     cursor = db.cursor()
 
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
+    safe_state = state_name.replace("'", "''")
+
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(safe_state)
     cursor.execute(query)
 
     for row in cursor.fetchall():
