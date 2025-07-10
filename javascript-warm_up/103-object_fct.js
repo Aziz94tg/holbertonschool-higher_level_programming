@@ -5,15 +5,15 @@ const myObject = {
   };
   console.log(myObject);
   
-
+  // Add a new method to increment the value
   myObject.incr = function () {
-  this.value++;
-};
+    this.value++;
+  };
   
-myObject.incr();
-console.log(myObject);
-myObject.incr();
-console.log(myObject);
-myObject.incr();
-console.log(myObject);
+  myObject.incr();
+  console.log(myObject);
+  myObject.incr();
+  console.log(myObject);
+  myObject.incr();
+  console.log(myObject);
   
