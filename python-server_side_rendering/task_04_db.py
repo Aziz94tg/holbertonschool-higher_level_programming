@@ -1,45 +1,31 @@
-from flask import Flask, request, render_template
-import sqlite3
+from flask import Flask, render_template, request
+import json
 
 app = Flask(__name__)
-
-def get_products_from_sql(product_id=None):
-    conn = sqlite3.connect('products.db')
-    cursor = conn.cursor()
-
-    if product_id:
-        cursor.execute("SELECT id, name, category, price FROM Products WHERE id=?", (product_id,))
-        row = cursor.fetchone()
-        conn.close()
-        if row:
-            return [{"id": row[0], "name": row[1], "category": row[2], "price": row[3]}]
-        else:
-            return None
-    else:
-        cursor.execute("SELECT id, name, category, price FROM Products")
-        rows = cursor.fetchall()
-        conn.close()
-        return [{"id": row[0], "name": row[1], "category": row[2], "price": row[3]} for row in rows]
 
 @app.route('/products')
 def products():
     source = request.args.get('source')
-    product_id = request.args.get('id')
-
-    data = []
+    id_filter = request.args.get('id')
+    products = []
     error = None
 
-    if source == 'sql':
+    if source == 'json':
         try:
-            data = get_products_from_sql(product_id)
-            if data is None:
-                error = "Product not found"
+            with open('products.json', 'r') as file:
+                products = json.load(file)
         except Exception as e:
-            error = f"Database error: {str(e)}"
+            error = f"Error reading JSON: {str(e)}"
+
+    # handle other sources like 'csv' or 'sql'...
     else:
-        error = "Wrong source"
+        if source not in ['json', 'csv', 'sql']:
+            error = "Wrong source"
 
-    return render_template("product_display.html", products=data, error=error)
+    # filter by ID if provided
+    if id_filter:
+        products = [p for p in products if str(p.get("id")) == id_filter]
+        if not products:
+            error = "Product not found"
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    return render_template('product_display.html', products=products, error=error)
