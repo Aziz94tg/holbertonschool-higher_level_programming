@@ -29,3 +29,5 @@ def products():
             error = "Product not found"
 
     return render_template('product_display.html', products=products, error=error)
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
